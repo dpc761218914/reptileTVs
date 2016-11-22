@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影天堂电视剧下载</title>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="row" style="margin-top: 50px">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h3 style="margin-bottom: 30px">电影天堂电视剧批量下载</h3>
+        <div class="alert alert-warning" role="alert"><strong>提示!</strong> 链接生成后，复制到迅雷即可...</div>
+        <input type="text" class="form-control" id="tv_link" placeholder="请输入电视剧网页链接"></br>
+        <button type="button" class="btn btn-primary" onclick="getData()">点击查询</button>
+        <!-- 为 地址列表 准备一个具备大小（宽高）的 DOM -->
+        <div class="jumbotron" id="main" style="margin-top: 20px">
+        </div>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</div>
+<script>
+    function getData(){
+        var url = $("#tv_link").val(); //获取
+        $.post("/getTvs",{url:url},function(result){
+            $("#main").html(result);
+        });
+    }
+</script>
+</body>
+</html>
